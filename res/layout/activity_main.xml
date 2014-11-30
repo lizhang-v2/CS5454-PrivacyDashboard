@@ -1,0 +1,127 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.cornell.cs5454.fall2014.privacydashboard.MainActivity" >
+
+    <Button
+        android:id="@+id/buttonFineLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonInstalledTime"
+        android:layout_below="@+id/buttonInstalledTime"
+        android:layout_marginTop="23dp"
+        android:text="Fine Location" />
+
+    <Button
+        android:id="@+id/buttonContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonFineLocation"
+        android:layout_below="@+id/buttonFineLocation"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="17dp"
+        android:text="Contact" />
+
+    <Button
+        android:id="@+id/buttonInstalledTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="37dp"
+        android:text="Installed Date" />
+
+    <TextView
+        android:id="@+id/textView_installedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonInstalledTime"
+        android:layout_alignBottom="@+id/buttonInstalledTime"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="55dp"
+        android:text="Text1"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView_fineLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonFineLocation"
+        android:layout_alignBottom="@+id/buttonFineLocation"
+        android:layout_alignLeft="@+id/textView_installedTime"
+        android:text="Text2"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView_Contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonContact"
+        android:layout_alignBottom="@+id/buttonContact"
+        android:layout_alignLeft="@+id/textView_installedTime"
+        android:text="Text3"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView_Calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonCalendar"
+        android:layout_alignBottom="@+id/buttonCalendar"
+        android:layout_alignLeft="@+id/textView_Contact"
+        android:text="Text4"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView_Camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonCamera"
+        android:layout_alignBottom="@+id/ButtbuttonCameraon02"
+        android:layout_alignLeft="@+id/textView_Calendar"
+        android:text="Text5"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/buttonCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonContact"
+        android:layout_below="@+id/buttonContact"
+        android:layout_marginTop="24dp"
+        android:text="Calendar" />
+
+    <Button
+        android:id="@+id/buttonCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonCalendar"
+        android:layout_below="@+id/buttonCalendar"
+        android:layout_marginTop="15dp"
+        android:text="Camera" />
+
+    <Button
+        android:id="@+id/buttonCallLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonCamera"
+        android:layout_below="@+id/buttonCamera"
+        android:layout_marginTop="19dp"
+        android:text="Call Log" />
+
+    <TextView
+        android:id="@+id/textView_CallLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonCallLog"
+        android:layout_alignBottom="@+id/buttonCallLog"
+        android:layout_alignLeft="@+id/textView_Camera"
+        android:text="Text6"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>
