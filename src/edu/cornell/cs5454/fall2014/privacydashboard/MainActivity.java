@@ -7,11 +7,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +35,7 @@ public class MainActivity extends ActionBarActivity {
 	Button btnCalendar;
 	Button btnCamera;
 	Button btnCallLog;
+	Button btnUseTime;
 	
 	TextView tvInstalledTime;
 	TextView tvFineLocation;
@@ -40,14 +43,17 @@ public class MainActivity extends ActionBarActivity {
 	TextView tvCalendar;
 	TextView tvCamera;
 	TextView tvCallLog;
+	TextView tvUseTime;
 	
-	Format dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	Format dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	HashMap<String, ArrayList<String>> apps = new HashMap<String, ArrayList<String>>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		//initMain();
 		
 		getAppInfo();
 		
@@ -57,6 +63,7 @@ public class MainActivity extends ActionBarActivity {
 		tvCalendar = (TextView) findViewById(R.id.textView_Calendar);
 		tvCamera = (TextView) findViewById(R.id.textView_Camera);
 		tvCallLog = (TextView) findViewById(R.id.textView_CallLog);
+		tvUseTime = (TextView) findViewById(R.id.textview_UseTime);
 		
 		tvInstalledTime.setText(String.valueOf(apps.get(INSTALLED_TIME).size()));
 		tvFineLocation.setText(String.valueOf(apps.get(FINE_LOCATION).size()));
@@ -64,6 +71,8 @@ public class MainActivity extends ActionBarActivity {
 		tvCalendar.setText(String.valueOf(apps.get(CALENDAR).size()));
 		tvCamera.setText(String.valueOf(apps.get(CAMERA).size()));
 		tvCallLog.setText(String.valueOf(apps.get(CALL_LOG).size()));
+		
+		tvUseTime.setText(String.valueOf(apps.get(INSTALLED_TIME).size()));
 		
 		btnInstalledTime = (Button) findViewById(R.id.buttonInstalledTime);
 		btnInstalledTime.setOnClickListener(new View.OnClickListener() {
@@ -130,9 +139,19 @@ public class MainActivity extends ActionBarActivity {
 				finish();
 			}
 		});
+		
+		btnUseTime = (Button) findViewById(R.id.buttonUseTime);
+		btnUseTime.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				Intent intent = new Intent(getApplicationContext(),
+						FrequencyMainActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 
-    @Override
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
@@ -168,6 +187,9 @@ public class MainActivity extends ActionBarActivity {
 			String packName;
 			for (PackageInfo pack : packages) {
 				packName = pack.packageName;
+				if(packName.contains("com.android") || packName.contains("com.google.android") || packName.equals("android")) {
+					continue;
+				}
 
 				Date date = new Date(pack.firstInstallTime);
 				pkgInstalledTime.add(dateFormat.format(date) + " | " + packName);
@@ -221,4 +243,11 @@ public class MainActivity extends ActionBarActivity {
 			ex.printStackTrace();
 		}
 	}
+	
+	private void initMain() {
+        // start service
+        Intent coreServiceIntent = new Intent(MainActivity.this, CoreService.class);
+        startService(coreServiceIntent);
+        Log.v("DEBUG", "initMain");
+    }
 }
